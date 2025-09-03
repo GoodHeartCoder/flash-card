@@ -1,0 +1,35 @@
+.NewDeckModal {
+  background: rgba(0, 0, 0, 0.6);
+  /* box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12); */
+  display: grid;
+  place-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+}
+
+.ModalBox {
+  background: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  /* min-width: 320px; */
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
+.ModalBox form {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
+
+.ModalBox input {
+  outline: none;
+  font-size: 1.5rem;
+  font-family: inherit;
+  padding: 1rem;
+  border-radius: 5px;
+}

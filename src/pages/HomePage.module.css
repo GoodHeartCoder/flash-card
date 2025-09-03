@@ -1,0 +1,7 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr fit-content;
+  max-width: 900px;
+  margin-inline: auto;
+}

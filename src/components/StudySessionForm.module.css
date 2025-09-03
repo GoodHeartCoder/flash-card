@@ -1,0 +1,39 @@
+.formContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto, 1fr;
+  padding: 1rem 2rem;
+  grid-column: 1;
+  grid-row: 1;
+}
+.formContainer legend {
+  grid-row: 1;
+  grid-column: 1 / span 2;
+  justify-self: center;
+  font-size: 2rem;
+  padding-bottom: 2rem;
+  text-decoration: underline;
+  font-weight: bolder;
+}
+.formContainer select {
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  outline: none;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+.formContainer fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.formContainer label {
+  font-size: 1.5rem;
+}
+.formContainer button {
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  justify-self: center;
+  align-self: center;
+}

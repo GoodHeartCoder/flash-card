@@ -1,0 +1,39 @@
+.editorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.Field {
+  border: 1px solid black;
+  overflow-y: auto;
+  word-break: break-word;
+  font-size: 1.25rem;
+  border-radius: 5px;
+  padding: 1rem;
+  direction: auto;
+}
+
+.questionField {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background-color: #f5f8ff;
+  padding: 0 1rem;
+}
+.addCard {
+  width: fit-content;
+  align-self: center;
+}
+.answerField {
+  height: 120px;
+  background-color: #f0f7fa;
+}
+
+.btnsGroup {
+  display: flex;
+  justify-content: center;
+}
+:global(.isActive) {
+  background-color: #e0e0e0;
+}

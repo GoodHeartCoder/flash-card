@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.nav ul {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.125rem;
+  cursor: pointer;
+}

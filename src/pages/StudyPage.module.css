@@ -1,0 +1,17 @@
+.container {
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+  text-align: center;
+}
+
+.question {
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.answer {
+  font-size: 1.5rem;
+  padding: 1rem;
+}
