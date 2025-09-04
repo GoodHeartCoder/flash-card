@@ -5,15 +5,14 @@ function StudyPage() {
     <div className={styles.container}>
       <div className={styles.question}>Lorem ipsum dolor </div>
       <div className={styles.answer}>
-        {" "}
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum explicabo
-        nobis{" "}
+        nobis
       </div>
       <div className={styles.buttons}>
-        <Button />
-        <Button />
-        <Button />
-        <Button />
+        <Button text="Again" />
+        <Button text="Hard" />
+        <Button text="Good" />
+        <Button text="Easy" />
       </div>
     </div>
   );
