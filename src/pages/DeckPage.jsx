@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom";
 import styles from "./DeckPage.module.css";
 import CardEditor from "../components/CardEditor";
 import CardsTable from "../components/CardsTable";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 function DeckPage() {
   const { id: deckId } = useParams();
-  const [currentDeck, setCurrentDeck] = useState(() => getCurrentDeck());
+  const [currentDeck, setCurrentDeck] = useState(null);
 
   async function getCurrentDeck() {
     try {
@@ -17,6 +17,10 @@ function DeckPage() {
       console.log();
     }
   }
+
+  useEffect(() => {
+    getCurrentDeck();
+  }, []);
   return (
     <div className={styles.DeckPage}>
       <CardsTable currentDeck={currentDeck} />
