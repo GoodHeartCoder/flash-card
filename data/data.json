@@ -24,7 +24,7 @@
           "id": "ceBKgRduDYw55BsedD5aS"
         },
         {
-          "question": "",
+          "question": "g",
           "answer": "<br>",
           "id": "dbS7POUCHm6kEzN4ie8cf"
         },
@@ -51,6 +51,32 @@
       "name": "lk",
       "cards": [],
       "id": 3
+    },
+    {
+      "name": "النحو",
+      "cards": [
+        {
+          "question": "ما هو تقسم الكلام؟",
+          "answer": "اسم وفعل وحرف",
+          "id": "DMVHb3rbu4FnYq3kbTOy8"
+        },
+        {
+          "question": "ما هو تقسم الكلام؟",
+          "answer": "اسم وفعل وحرف",
+          "id": "dFzfPUuCGxRI5EGzF0bcy"
+        },
+        {
+          "question": "ماهو اسمي؟",
+          "answer": "هشام",
+          "id": "5b-PkNm3Q5twMujGd92NC"
+        },
+        {
+          "question": "ماهو اليوم",
+          "answer": "اليوم",
+          "id": "HkSUG6ascZeR6L0jLaVeX"
+        }
+      ],
+      "id": 4
     }
   ]
 }

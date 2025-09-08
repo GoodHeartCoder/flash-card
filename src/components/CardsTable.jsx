@@ -10,7 +10,7 @@ function CardsTable({ currentDeck }) {
           </tr>
         </thead>
         <tbody>
-          {currentDeck.cards?.map((card) => (
+          {currentDeck?.cards.map((card) => (
             <CardsTableItem
               card={{
                 ...card,
