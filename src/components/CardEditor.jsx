@@ -1,7 +1,6 @@
 import styles from "./CardEditor.module.css";
 import { useEffect, useReducer, useRef, useState } from "react";
 import { nanoid } from "nanoid";
-
 import Button from "./Button";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
@@ -14,17 +13,11 @@ const initialState = {
   bold: false,
   italic: false,
   underline: false,
-  answerHtml: "<br>",
-  questionHtml: "<br>",
   isSubmitting: false,
 };
 
 function reducer(state, action) {
   switch (action.type) {
-    case "setAnswerHtml":
-      return { ...state, answerHtml: action.payload };
-    case "setQuestionHtml":
-      return { ...state, questionHtml: action.payload };
     case "updateFormatting":
       return {
         ...state,
@@ -35,8 +28,6 @@ function reducer(state, action) {
     case "resetFormatting":
       return {
         ...initialState,
-        answerHtml: state.answerHtml,
-        questionHtml: state.questionHtml,
       };
     case "resetEditor":
       return { ...initialState };
@@ -47,7 +38,14 @@ function reducer(state, action) {
   }
 }
 
-function CardEditor({ deckId, getCurrentDeck, currentCard, setCurrentCard }) {
+function CardEditor({
+  deckId,
+  getCurrentDeck,
+  currentQuestion,
+  setCurrentQuestion,
+  currentAnswer,
+  setCurrentAnswer,
+}) {
   const refA = useRef(null);
   const refB = useRef(null);
   const [activeRef, setActiveRef] = useState(null);
@@ -94,8 +92,8 @@ function CardEditor({ deckId, getCurrentDeck, currentCard, setCurrentCard }) {
   }
 
   useEffect(() => {
-    if (refA.current) refA.current.innerHTML = state.answerHtml;
-    if (refB.current) refB.current.innerHTML = state.questionHtml;
+    if (refA.current) refA.current.innerHTML = currentQuestion;
+    if (refB.current) refB.current.innerHTML = currentAnswer;
   }, []);
 
   const applyFormatting = (command, value = null) => {
@@ -181,12 +179,7 @@ function CardEditor({ deckId, getCurrentDeck, currentCard, setCurrentCard }) {
           setActiveRef(refA);
           checkFormattingState();
         }}
-        onInput={(e) => {
-          dispatch({
-            type: "setQuestionHtml",
-            payload: e.currentTarget.innerHTML,
-          });
-        }}
+        onInput={setCurrentQuestion((e) => e.currentTarget.innerHTML)}
         onKeyDown={handleKeyDown}
         onKeyUp={checkFormattingState}
         onMouseUp={checkFormattingState}
@@ -201,12 +194,7 @@ function CardEditor({ deckId, getCurrentDeck, currentCard, setCurrentCard }) {
           setActiveRef(refB);
           checkFormattingState();
         }}
-        onInput={(e) => {
-          dispatch({
-            type: "setAnswerHtml",
-            payload: e.currentTarget.innerHTML,
-          });
-        }}
+        onInput={setCurrentAnswer((e) => e.target.value)}
         onKeyDown={handleKeyDown}
         onKeyUp={checkFormattingState}
         onMouseUp={checkFormattingState}
@@ -215,8 +203,8 @@ function CardEditor({ deckId, getCurrentDeck, currentCard, setCurrentCard }) {
       <Button
         onClick={() =>
           handleAddCard({
-            question: state.questionHtml,
-            answer: state.answerHtml,
+            question: currentQuestion,
+            answer: currentAnswer,
             id: nanoid(),
           })
         }
