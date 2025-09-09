@@ -6,3 +6,5 @@ i need to handle fetch errors
 i need to add loading state
 
 maybe when i add SupaBase i will have the ability to to fetch only the deck name and ids in the the home page not not my entire database
+
+i need to add a prompt window when deleting a deck i can use the native one

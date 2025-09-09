@@ -8,6 +8,10 @@ function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deckName, setDeckName] = useState("");
   const [decks, setDecks] = useState([]);
+  const [EditingInfo, setEditingInfo] = useState({
+    isEditing: false,
+    deckId: "",
+  });
 
   async function getDecks() {
     const res = await fetch(`http://localhost:9000/decks`);
@@ -21,26 +25,36 @@ function HomePage() {
 
   async function handleAddDeck() {
     const deckData = {
-      name: deckName,
+      name: deckName.replace(/<[^>]+>/g, ""),
       cards: [],
     };
 
     try {
-      const res = await fetch("http://localhost:9000/decks", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(deckData),
-      });
-
-      if (!res.ok) {
-        const errorText = await res.text();
-        console.error("Error response:", errorText);
-        throw new Error("Failed to create deck");
+      if (!EditingInfo.isEditing) {
+        const res = await fetch("http://localhost:9000/decks", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(deckData),
+        });
+      } else {
+        // this is for editing the deck name
+        const res = await fetch(
+          `http://localhost:9000/decks/${EditingInfo.deckId}`,
+          {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name: deckName.replace(/<[^>]+>/g, "") }),
+          }
+        );
+        if (!res.ok) {
+          const errorText = await res.text();
+          console.error("Error response:", errorText);
+          throw new Error("Failed to create deck");
+        }
       }
 
-      // const result = await res.json();
       getDecks();
       setDeckName("");
     } catch (error) {
@@ -51,6 +65,10 @@ function HomePage() {
   }
 
   async function deleteDeck(deckId) {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this deck?"
+    );
+    if (!confirmed) return;
     try {
       const res = await fetch(`http://localhost:9000/decks/${deckId}`, {
         method: "DELETE",
@@ -67,8 +85,27 @@ function HomePage() {
 
   return (
     <section className={styles.container}>
-      <StudySessionForm decks={decks} />
-      <DecksList decks={decks} deleteDeck={deleteDeck} />
+      {decks.length === 0 ? (
+        <div
+          style={{
+            display: "grid",
+            placeContent: "center",
+            padding: "2rem",
+            fontSize: "1.4rem",
+            color: "#666",
+          }}
+        >
+          Create a Deck to start studying 📚
+        </div>
+      ) : (
+        <StudySessionForm decks={decks} />
+      )}
+      <DecksList
+        decks={decks}
+        deleteDeck={deleteDeck}
+        setIsModalOpen={setIsModalOpen}
+        setEditingInfo={setEditingInfo}
+      />
       <Button
         text="+"
         size="xl"

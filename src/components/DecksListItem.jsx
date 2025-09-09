@@ -1,18 +1,28 @@
 import styles from "./DecksListItem.module.css";
 import Button from "./Button";
 import { Link } from "react-router-dom";
-function DecksListItem({ deckId, name, deleteDeck }) {
-  const handleMenuChange = (e) => {
+import { useState } from "react";
+function DecksListItem({
+  setIsModalOpen,
+  deckId,
+  name,
+  deleteDeck,
+  setEditingInfo,
+}) {
+  async function handleEditName() {
+    setIsModalOpen(true);
+    setEditingInfo({ isEditing: true, deckId: deckId });
+  }
+  function handleMenuChange(e) {
     const value = e.target.value;
     if (value === "edit") {
-      // Add your edit logic here
-      console.log("Edit deck:", deckId);
+      handleEditName();
     } else if (value === "delete") {
       deleteDeck(deckId);
     }
     // Reset the select to default
     e.target.value = "";
-  };
+  }
   return (
     <li className={styles.container}>
       <h2>{name}</h2>

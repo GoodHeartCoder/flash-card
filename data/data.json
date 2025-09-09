@@ -1,82 +1,15 @@
 {
   "decks": [
     {
-      "name": "hy",
+      "name": "jkh",
       "cards": [
         {
-          "question": "السلام عليكم",
-          "answer": "نعم أنا هشام",
-          "id": "iY44lQUxlGFnXkwKWZ6m1"
-        },
-        {
-          "question": "ماهو تعريف علم الصرف؟",
-          "answer": "هو الذي يعنى بدراسة بنية الكلمة وما يصيبها من تغيرات لفظية أو معنوية",
-          "id": "IOcoSQfCS9RTCgCi5VjSc"
-        },
-        {
-          "question": "السلام عليكم",
-          "answer": "<br>",
-          "id": "YYEIICtxMswF0PNOlsFsg"
-        },
-        {
-          "question": "sdfsdf&nbsp;",
-          "answer": "<br>",
-          "id": "ceBKgRduDYw55BsedD5aS"
-        },
-        {
-          "question": "g",
-          "answer": "<br>",
-          "id": "dbS7POUCHm6kEzN4ie8cf"
-        },
-        {
-          "question": "lkj",
-          "answer": ";lk",
-          "id": "iAlRkhP7KpA32eBoxxPcE"
+          "question": "hy",
+          "answer": "no",
+          "id": "J_loSMDte0XUyFcbeXBEZ"
         }
       ],
       "id": 1
-    },
-    {
-      "name": "no ",
-      "cards": [
-        {
-          "question": "m",
-          "answer": ",",
-          "id": "9o8j32vfNG7yHCWTaUmcE"
-        }
-      ],
-      "id": 2
-    },
-    {
-      "name": "lk",
-      "cards": [],
-      "id": 3
-    },
-    {
-      "name": "النحو",
-      "cards": [
-        {
-          "question": "ما هو تقسم الكلام؟",
-          "answer": "اسم وفعل وحرف",
-          "id": "DMVHb3rbu4FnYq3kbTOy8"
-        },
-        {
-          "question": "ما هو تقسم الكلام؟",
-          "answer": "اسم وفعل وحرف",
-          "id": "dFzfPUuCGxRI5EGzF0bcy"
-        },
-        {
-          "question": "ماهو اسمي؟",
-          "answer": "هشام",
-          "id": "5b-PkNm3Q5twMujGd92NC"
-        },
-        {
-          "question": "ماهو اليوم",
-          "answer": "اليوم",
-          "id": "HkSUG6ascZeR6L0jLaVeX"
-        }
-      ],
-      "id": 4
     }
   ]
 }

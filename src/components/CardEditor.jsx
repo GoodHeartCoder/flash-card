@@ -16,16 +16,15 @@ const initialState = {
   underline: false,
   answerHtml: "<br>",
   questionHtml: "<br>",
+  isSubmitting: false,
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "setAnswerHtml":
       return { ...state, answerHtml: action.payload };
-
     case "setQuestionHtml":
       return { ...state, questionHtml: action.payload };
-
     case "updateFormatting":
       return {
         ...state,
@@ -33,7 +32,6 @@ function reducer(state, action) {
         italic: action.payload.italic,
         underline: action.payload.underline,
       };
-
     case "resetFormatting":
       return {
         ...initialState,
@@ -42,12 +40,14 @@ function reducer(state, action) {
       };
     case "resetEditor":
       return { ...initialState };
+    case "setSubmitting":
+      return { ...state, isSubmitting: action.payload };
     default:
       throw new Error("Unknown action");
   }
 }
 
-function CardEditor({ deckId, getCurrentDeck }) {
+function CardEditor({ deckId, getCurrentDeck, currentCard, setCurrentCard }) {
   const refA = useRef(null);
   const refB = useRef(null);
   const [activeRef, setActiveRef] = useState(null);
@@ -68,6 +68,11 @@ function CardEditor({ deckId, getCurrentDeck }) {
   };
 
   async function handleAddCard(card) {
+    dispatch({ type: "resetEditor" });
+    dispatch({ type: "setSubmitting", payload: true });
+    if (refA.current) refA.current.innerHTML = "<br>";
+    if (refB.current) refB.current.innerHTML = "<br>";
+
     try {
       // Get current deck
       const deckRes = await fetch(`http://localhost:9000/decks/${deckId}`);
@@ -81,11 +86,10 @@ function CardEditor({ deckId, getCurrentDeck }) {
       });
 
       getCurrentDeck();
-      dispatch({ type: "resetEditor" });
-      if (refA.current) refA.current.innerHTML = "<br>";
-      if (refB.current) refB.current.innerHTML = "<br>";
     } catch {
       console.log();
+    } finally {
+      dispatch({ type: "setSubmitting", payload: false });
     }
   }
 
@@ -141,11 +145,6 @@ function CardEditor({ deckId, getCurrentDeck }) {
       e.preventDefault();
       // handleAddCard();
     }
-  };
-
-  // Handle cursor position changes and selection changes
-  const handleSelectionChange = () => {
-    checkFormattingState();
   };
 
   return (
@@ -224,6 +223,7 @@ function CardEditor({ deckId, getCurrentDeck }) {
         text="Add Card"
         className={styles.addCard}
         size="lg"
+        disabled={state.isSubmitting}
       />
     </div>
   );

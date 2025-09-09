@@ -8,7 +8,6 @@ function StudyPage() {
   const [searchParams] = useSearchParams();
   const mode = searchParams.get("mode");
   const [currentDeck, setCurrentDeck] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [studyArray, setStudyArray] = useState(null);
 
   function randomizeCards(arr, count = arr.length) {
@@ -24,14 +23,30 @@ function StudyPage() {
     return shuffled.slice(0, count);
   }
 
-  function handleEasyButton() {
+  function handleCardResponse(difficulty) {
     if (studyArray.length === 1) return;
-    // setStudyArray(studyArray.filter((_, index) => index !== currentIndex));
-    setStudyArray(() => {
-      const arr = studyArray.slice();
-      arr.shift();
-      return arr;
-    });
+
+    if (difficulty === "easy") {
+      // Remove completely
+      setStudyArray((studyArray) => {
+        const arr = studyArray.slice();
+        arr.shift();
+        return arr;
+      });
+    } else {
+      // Insert back at different positions
+      setStudyArray((studyArray) => {
+        const arr = studyArray.slice();
+        const insertIndex =
+          difficulty === "hard"
+            ? Math.floor(Math.random() * 2) + 3 // positions 3-4
+            : Math.floor(Math.random() * 3) + 6; // positions 6-8
+
+        arr.splice(Math.min(insertIndex, arr.length), 0, arr[0]);
+        arr.shift();
+        return arr;
+      });
+    }
   }
   console.log(studyArray);
 
@@ -40,7 +55,9 @@ function StudyPage() {
       const res = await fetch(`http://localhost:9000/decks/${deckId}`);
       const deck = await res.json();
       setCurrentDeck(deck);
-      setStudyArray(deck.cards.slice());
+      let cardsCopy = deck.cards.slice();
+      if (mode === "random") cardsCopy = randomizeCards(cardsCopy);
+      setStudyArray(cardsCopy);
       return deck;
     } catch {
       console.log();
@@ -52,13 +69,13 @@ function StudyPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.question}>
-        {studyArray?.at(currentIndex).question}
-      </div>
-      <div className={styles.answer}>{studyArray?.at(currentIndex).answer}</div>
+      <div className={styles.question}>{studyArray?.at(0).question}</div>
+      <div className={styles.answer}>{studyArray?.at(0).answer}</div>
+      <div>Cards Left: {studyArray?.length}</div>
       <div className={styles.buttons}>
-        <Button text="Again" />
-        <Button text="Easy" onClick={handleEasyButton} />
+        <Button text="Again" onClick={() => handleCardResponse("again")} />
+        <Button text="Hard" onClick={() => handleCardResponse("hard")} />
+        <Button text="Easy" onClick={() => handleCardResponse("easy")} />
       </div>
     </div>
   );

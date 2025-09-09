@@ -13,6 +13,7 @@ function Button({
   className = "",
   borderRadius = "5px",
   onClick,
+  disabled = false,
 }) {
   return (
     <button
@@ -24,7 +25,8 @@ function Button({
         borderRadius,
         border: "1px solid",
       }}
-      onClick={onClick}
+      onClick={disabled ? undefined : onClick}
+      disabled={disabled}
     >
       {text}
     </button>

@@ -6,7 +6,11 @@ import { useEffect, useState } from "react";
 function DeckPage() {
   const { id: deckId } = useParams();
   const [currentDeck, setCurrentDeck] = useState(null);
-
+  const [currentCard, setCurrentCard] = useState({
+    question: "<br>",
+    answer: "<br>",
+    id: "",
+  });
   async function getCurrentDeck() {
     try {
       const res = await fetch(`http://localhost:9000/decks/${deckId}`);
@@ -21,6 +25,7 @@ function DeckPage() {
   useEffect(() => {
     getCurrentDeck();
   }, []);
+
   return (
     <div className={styles.DeckPage}>
       <CardsTable currentDeck={currentDeck} />
@@ -28,6 +33,8 @@ function DeckPage() {
         deckId={deckId}
         setCurrentDeck={setCurrentDeck}
         getCurrentDeck={getCurrentDeck}
+        currentCard={currentCard}
+        setCurrentCard={setCurrentCard}
       />
     </div>
   );

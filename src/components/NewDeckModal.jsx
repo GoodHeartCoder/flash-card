@@ -15,6 +15,8 @@ function NewDeckModal({
             placeholder="name you deck"
             value={deckName}
             onChange={(e) => setDeckName(e.target.value)}
+            required="true"
+            maxlength="50"
           />
           <div>
             <Button
