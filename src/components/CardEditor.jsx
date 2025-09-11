@@ -179,7 +179,7 @@ function CardEditor({
           setActiveRef(refA);
           checkFormattingState();
         }}
-        onInput={setCurrentQuestion((e) => e.currentTarget.innerHTML)}
+        onInput={(e) => setCurrentQuestion(e.currentTarget.innerHTML)}
         onKeyDown={handleKeyDown}
         onKeyUp={checkFormattingState}
         onMouseUp={checkFormattingState}
@@ -194,7 +194,9 @@ function CardEditor({
           setActiveRef(refB);
           checkFormattingState();
         }}
-        onInput={setCurrentAnswer((e) => e.target.value)}
+        onInput={(e) => {
+          setCurrentAnswer(e.target.innerHTML);
+        }}
         onKeyDown={handleKeyDown}
         onKeyUp={checkFormattingState}
         onMouseUp={checkFormattingState}

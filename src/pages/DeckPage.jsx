@@ -25,7 +25,12 @@ function DeckPage() {
 
   return (
     <div className={styles.DeckPage}>
-      <CardsTable currentDeck={currentDeck} />
+      <CardsTable
+        currentDeck={currentDeck}
+        deckId={deckId}
+        setCurrentAnswer={setCurrentAnswer}
+        setCurrentQuestion={setCurrentQuestion}
+      />
       <CardEditor
         deckId={deckId}
         setCurrentDeck={setCurrentDeck}
