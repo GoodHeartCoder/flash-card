@@ -5,6 +5,8 @@ function CardsTable({
   deckId,
   setCurrentAnswer,
   setCurrentQuestion,
+  getCurrentDeck,
+  setEditingCard,
 }) {
   return (
     <div className={styles.scrollContainer}>
@@ -25,6 +27,8 @@ function CardsTable({
               key={card.id}
               setCurrentAnswer={setCurrentAnswer}
               setCurrentQuestion={setCurrentQuestion}
+              getCurrentDeck={getCurrentDeck}
+              setEditingCard={setEditingCard}
             />
           ))}
         </tbody>

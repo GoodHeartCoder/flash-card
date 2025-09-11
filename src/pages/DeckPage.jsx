@@ -8,6 +8,7 @@ function DeckPage() {
   const [currentDeck, setCurrentDeck] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState("<br>");
   const [currentAnswer, setCurrentAnswer] = useState("<br>");
+  const [editingCard, setEditingCard] = useState(null); // Add this
   async function getCurrentDeck() {
     try {
       const res = await fetch(`http://localhost:9000/decks/${deckId}`);
@@ -30,6 +31,8 @@ function DeckPage() {
         deckId={deckId}
         setCurrentAnswer={setCurrentAnswer}
         setCurrentQuestion={setCurrentQuestion}
+        getCurrentDeck={getCurrentDeck}
+        setEditingCard={setEditingCard} // Pass this down
       />
       <CardEditor
         deckId={deckId}
@@ -39,6 +42,8 @@ function DeckPage() {
         setCurrentQuestion={setCurrentQuestion}
         currentAnswer={currentAnswer}
         setCurrentAnswer={setCurrentAnswer}
+        editingCard={editingCard} // Pass this down
+        setEditingCard={setEditingCard} // Pass this down
       />
     </div>
   );

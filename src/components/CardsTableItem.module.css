@@ -1,4 +1,53 @@
 .row {
   word-break: break-word;
   cursor: pointer;
+  position: relative;
+}
+
+.row td {
+  position: relative;
+}
+
+.buttonContainer {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.row:hover .buttonContainer {
+  opacity: 1;
+  visibility: visible;
+}
+
+.editBtn,
+.deleteBtn {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.editBtn {
+  background: #007bff;
+  color: white;
+}
+
+.deleteBtn {
+  background: #dc3545;
+  color: white;
+}
+
+.editBtn:hover {
+  background: #0056b3;
+}
+
+.deleteBtn:hover {
+  background: #c82333;
 }

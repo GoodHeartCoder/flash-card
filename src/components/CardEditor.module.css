@@ -37,3 +37,14 @@
 :global(.isActive) {
   background-color: #e0e0e0;
 }
+
+/* src/components/CardEditor.module.css */
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cancelCard {
+  width: fit-content;
+}
