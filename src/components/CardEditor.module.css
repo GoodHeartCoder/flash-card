@@ -1,4 +1,4 @@
-.editorContainer {
+/* .editorContainer {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -39,6 +39,45 @@
 }
 
 /* src/components/CardEditor.module.css */
+/* .buttonGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cancelCard {
+  width: fit-content;
+} */
+.editorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.Field {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.questionField {
+  min-height: 50px;
+  background-color: #f5f8ff;
+}
+
+.answerField {
+  min-height: 120px;
+  background-color: #f0f7fa;
+}
+
+.addCard {
+  width: fit-content;
+  align-self: center;
+}
+
 .buttonGroup {
   display: flex;
   gap: 1rem;

@@ -1,10 +1,13 @@
-im my cards Editor one i press enter it adds a space then if i press ctrl+enter i go to a new line in a buggy way i need to fix that
-
-i need to handle form validation
-
 i need to handle fetch errors
 i need to add loading state
+i to refactor my code to context in some pages
+when add supabase the manipulating data will be much easier
 
-maybe when i add SupaBase i will have the ability to to fetch only the deck name and ids in the the home page not not my entire database
+in the study session form there diffrent resonse the disble the button handle them the errors
 
-i need to add a prompt window when deleting a deck i can use the native one
+i need to change my text editor
+
+in my editor in editing mode i can delete the card while editing i need to prevent that
+
+i want to use a popup for errors
+maybe you can use radio for the study mode

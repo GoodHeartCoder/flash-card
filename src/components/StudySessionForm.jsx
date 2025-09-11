@@ -40,7 +40,18 @@ function StudySessionForm({ decks }) {
         </select>
       </fieldset>
       <Link to={`/study/${selectedDeckId}?mode=${studyMode}`}>
-        <Button text="Start Studying" />
+        <Button
+          text="Start Studying"
+          className={styles.formBtn}
+          disabled={
+            studyMode === "" ||
+            selectedDeckId === "" ||
+            decks.find((deck) => deck.id === Number(selectedDeckId)).cards
+              .length === 0
+              ? true
+              : false
+          }
+        />
       </Link>
     </form>
   );

@@ -31,9 +31,10 @@
 .formContainer label {
   font-size: 1.5rem;
 }
-.formContainer button {
+.formBtn {
+}
+
+.formContainer a {
   width: fit-content;
-  padding: 0.5rem 1rem;
-  justify-self: center;
-  align-self: center;
+  height: fit-content;
 }

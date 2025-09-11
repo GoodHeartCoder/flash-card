@@ -19,11 +19,7 @@ function NewDeckModal({
             maxlength="50"
           />
           <div>
-            <Button
-              text="Create Deck"
-              size="lg"
-              onClick={() => handleAddDeck()}
-            />
+            <Button text="OK" size="lg" onClick={() => handleAddDeck()} />
             <Button
               text="Cancel"
               size="lg"

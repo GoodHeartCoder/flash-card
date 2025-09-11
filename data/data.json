@@ -1,24 +1,8 @@
 {
   "decks": [
     {
-      "name": "jkh",
-      "cards": [
-        {
-          "question": "dfg",
-          "answer": "sdfg",
-          "id": "sYEB49o7O2Z4e_kZnkHBN"
-        },
-        {
-          "question": "alk;dsjfal;skjdfasjdf;",
-          "answer": ";a",
-          "id": "6lfhNoBwRe3oIp-yIyLhh"
-        },
-        {
-          "question": "a",
-          "answer": ";alsdfkj;sldkfj;lksjdfdk;jf",
-          "id": "7ihW8pYGswDck2vrLsFqv"
-        }
-      ],
+      "name": "my deck",
+      "cards": [],
       "id": 1
     }
   ]

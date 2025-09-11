@@ -2,6 +2,7 @@ import styles from "./StudyPage.module.css";
 import Button from "../components/Button";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function StudyPage() {
   const { id: deckId } = useParams();
@@ -9,7 +10,8 @@ function StudyPage() {
   const mode = searchParams.get("mode");
   const [currentDeck, setCurrentDeck] = useState(null);
   const [studyArray, setStudyArray] = useState(null);
-
+  const [hasAnswered, setHasAnswered] = useState(false);
+  const [isDeckCompleted, setIsDeckCompleted] = useState(false);
   function randomizeCards(arr, count = arr.length) {
     // Create a copy to avoid mutating original
     const shuffled = [...arr];
@@ -24,8 +26,11 @@ function StudyPage() {
   }
 
   function handleCardResponse(difficulty) {
-    if (studyArray.length === 1) return;
-
+    if (studyArray.length === 1 && difficulty == "easy") {
+      setIsDeckCompleted(true);
+      return;
+    }
+    setHasAnswered(false);
     if (difficulty === "easy") {
       // Remove completely
       setStudyArray((studyArray) => {
@@ -69,14 +74,53 @@ function StudyPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.question}>{studyArray?.at(0).question}</div>
-      <div className={styles.answer}>{studyArray?.at(0).answer}</div>
-      <div>Cards Left: {studyArray?.length}</div>
-      <div className={styles.buttons}>
-        <Button text="Again" onClick={() => handleCardResponse("again")} />
-        <Button text="Hard" onClick={() => handleCardResponse("hard")} />
-        <Button text="Easy" onClick={() => handleCardResponse("easy")} />
-      </div>
+      {isDeckCompleted ? (
+        <>
+          <div className={styles.finishMessageScreen}>
+            You Finished Studying this deck
+            <br />
+            📚
+            <div>
+              <Link to="/">
+                {" "}
+                <Button text="Go Back to Home Page" size="lg" />{" "}
+              </Link>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          {" "}
+          <div className={styles.question}>{studyArray?.at(0).question}</div>
+          <div
+            className={styles.answer}
+            style={!hasAnswered ? { opacity: "0" } : {}}
+          >
+            {studyArray?.at(0).answer}
+          </div>
+          <div>Cards Left: {studyArray?.length}</div>
+          <div className={styles.buttons}>
+            {!hasAnswered ? (
+              <Button text="Show Answer" onClick={() => setHasAnswered(true)} />
+            ) : (
+              <>
+                <Button
+                  text="Again"
+                  onClick={() => handleCardResponse("again")}
+                />
+                <Button
+                  text="Hard"
+                  onClick={() => handleCardResponse("hard")}
+                />
+                <Button
+                  text="Easy"
+                  onClick={() => handleCardResponse("easy")}
+                />
+              </>
+            )}
+          </div>{" "}
+        </>
+      )}
     </div>
   );
 }
