@@ -1,5 +1,5 @@
 import styles from "./CardEditor.module.css";
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import { nanoid } from "nanoid";
 import Button from "./Button";
 
@@ -14,8 +14,6 @@ function CardEditor({
   setEditingCard,
 }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const textareaQuestionRef = useRef(null);
-  const textareaAnswerRef = useRef(null);
 
   async function handleSaveCard(card) {
     setIsSubmitting(true);
@@ -69,7 +67,6 @@ function CardEditor({
         onChange={(e) => setCurrentQuestion(e.target.value)}
         placeholder="Enter question"
         dir="auto"
-        ref={textareaQuestionRef}
       />
       <textarea
         className={`${styles.answerField} ${styles.Field}`}
@@ -77,7 +74,6 @@ function CardEditor({
         onChange={(e) => setCurrentAnswer(e.target.value)}
         placeholder="Enter answer"
         dir="auto"
-        ref={textareaAnswerRef}
       />
       <div className={styles.buttonGroup}>
         <Button

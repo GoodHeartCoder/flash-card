@@ -1,13 +1,10 @@
 import styles from "./DecksListItem.module.css";
 import Button from "./Button";
 import { Link } from "react-router-dom";
-function DecksListItem({
-  setIsModalOpen,
-  deckId,
-  name,
-  deleteDeck,
-  setEditingInfo,
-}) {
+import useDecks from "../contexts/useDecks";
+function DecksListItem({ deckId, name, deleteDeck }) {
+  const { setIsModalOpen, setEditingInfo } = useDecks();
+
   async function handleEditName() {
     setIsModalOpen(true);
     setEditingInfo({ isEditing: true, deckId: deckId });

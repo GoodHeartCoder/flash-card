@@ -1,11 +1,8 @@
 import styles from "./NewDeckModal.module.css";
 import Button from "./Button";
-function NewDeckModal({
-  handleAddDeck,
-  deckName,
-  setDeckName,
-  setIsModalOpen,
-}) {
+import useDecks from "../contexts/useDecks";
+function NewDeckModal() {
+  const { setIsModalOpen, deckName, setDeckName, upsertDeck } = useDecks();
   return (
     <div className={`${styles.NewDeckModal} modal-open`}>
       <div className={styles.ModalBox}>
@@ -15,11 +12,11 @@ function NewDeckModal({
             placeholder="name you deck"
             value={deckName}
             onChange={(e) => setDeckName(e.target.value)}
-            required="true"
-            maxlength="50"
+            required={true}
+            maxLength="50"
           />
           <div>
-            <Button text="OK" size="lg" onClick={() => handleAddDeck()} />
+            <Button text="OK" size="lg" onClick={() => upsertDeck()} />
             <Button
               text="Cancel"
               size="lg"

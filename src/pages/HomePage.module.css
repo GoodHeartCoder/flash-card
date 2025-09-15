@@ -5,3 +5,11 @@
   max-width: 900px;
   margin-inline: auto;
 }
+
+.noDecksMessage {
+  display: grid;
+  place-content: center;
+  padding: 2rem;
+  font-size: 1.4rem;
+  color: #666;
+}

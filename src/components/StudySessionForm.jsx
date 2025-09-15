@@ -2,9 +2,12 @@ import styles from "./StudySessionForm.module.css";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-function StudySessionForm({ decks }) {
+import useDecks from "../contexts/useDecks";
+function StudySessionForm() {
   const [selectedDeckId, setSelectedDeckId] = useState("");
   const [studyMode, setStudyMode] = useState("");
+
+  const { decks } = useDecks();
   return (
     <form className={styles.formContainer}>
       <legend>Study Options</legend>

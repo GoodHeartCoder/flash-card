@@ -1,7 +1,9 @@
 import DecksListItem from "./DecksListItem";
 import styles from "./DecksList.module.css";
+import useDecks from "../contexts/useDecks";
 
-function DecksList({ setIsModalOpen, decks, deleteDeck, setEditingInfo }) {
+function DecksList({ deleteDeck }) {
+  const { decks } = useDecks();
   return (
     <ul className={styles.listContainer}>
       {decks.map((deck) => (
@@ -10,8 +12,6 @@ function DecksList({ setIsModalOpen, decks, deleteDeck, setEditingInfo }) {
           name={deck.name}
           key={deck.id}
           deleteDeck={deleteDeck}
-          setIsModalOpen={setIsModalOpen}
-          setEditingInfo={setEditingInfo}
         />
       ))}
     </ul>

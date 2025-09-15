@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 function DeckPage() {
   const { id: deckId } = useParams();
   const [currentDeck, setCurrentDeck] = useState(null);
-  const [currentQuestion, setCurrentQuestion] = useState("<br>");
-  const [currentAnswer, setCurrentAnswer] = useState("<br>");
-  const [editingCard, setEditingCard] = useState(null); // Add this
+  const [currentQuestion, setCurrentQuestion] = useState("");
+  const [currentAnswer, setCurrentAnswer] = useState("");
+  const [editingCard, setEditingCard] = useState(null);
   async function getCurrentDeck() {
     try {
       const res = await fetch(`http://localhost:9000/decks/${deckId}`);
@@ -32,18 +32,17 @@ function DeckPage() {
         setCurrentAnswer={setCurrentAnswer}
         setCurrentQuestion={setCurrentQuestion}
         getCurrentDeck={getCurrentDeck}
-        setEditingCard={setEditingCard} // Pass this down
+        setEditingCard={setEditingCard}
       />
       <CardEditor
         deckId={deckId}
-        setCurrentDeck={setCurrentDeck}
         getCurrentDeck={getCurrentDeck}
         currentQuestion={currentQuestion}
         setCurrentQuestion={setCurrentQuestion}
         currentAnswer={currentAnswer}
         setCurrentAnswer={setCurrentAnswer}
-        editingCard={editingCard} // Pass this down
-        setEditingCard={setEditingCard} // Pass this down
+        editingCard={editingCard}
+        setEditingCard={setEditingCard}
       />
     </div>
   );

@@ -3,16 +3,19 @@ import HomePage from "../src/pages/HomePage";
 import DeckPage from "../src/pages/DeckPage";
 import Header from "./components/Header";
 import StudyPage from "./pages/StudyPage";
+import DecksProvider from "./contexts/DecksContext";
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/decks/:id" element={<DeckPage />} />
-          <Route path="/study/:id" element={<StudyPage />} />
-        </Routes>
+        <DecksProvider>
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/decks/:id" element={<DeckPage />} />
+            <Route path="/study/:id" element={<StudyPage />} />
+          </Routes>
+        </DecksProvider>
       </BrowserRouter>
     </>
   );
