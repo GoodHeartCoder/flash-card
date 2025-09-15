@@ -1,7 +1,6 @@
 import styles from "./DecksListItem.module.css";
 import Button from "./Button";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 function DecksListItem({
   setIsModalOpen,
   deckId,

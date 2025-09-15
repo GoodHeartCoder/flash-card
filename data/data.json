@@ -2,7 +2,13 @@
   "decks": [
     {
       "name": "my deck",
-      "cards": [],
+      "cards": [
+        {
+          "question": "kjg;lk",
+          "answer": ";kl",
+          "id": "Z-m_SYjmxUiK2iMYa4jpg"
+        }
+      ],
       "id": 1
     }
   ]
