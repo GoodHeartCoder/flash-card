@@ -28,16 +28,8 @@ function DeckPage() {
   return (
     <div className={styles.DeckPage}>
       {currentDeck === null ? (
-        <div
-          style={{
-            background: "#f1f5f9",
-            display: "grid",
-            placeContent: "center",
-            height: "100%",
-          }}
-        >
-          {" "}
-          <LoadingSpinner size="xl" />
+        <div style={{ display: "grid", placeContent: "center" }}>
+          <LoadingSpinner size="xl" color="#007bff" />
         </div>
       ) : (
         <CardsTable

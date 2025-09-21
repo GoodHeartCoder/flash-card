@@ -47,8 +47,15 @@ function CardEditor({
       setCurrentQuestion("");
       setCurrentAnswer("");
       setEditingCard(null);
+
+      // Show success notification
+      showNotification(
+        "success",
+        editingCard ? "Card updated successfully!" : "Card added successfully!",
+        true
+      );
     } catch {
-      console.log();
+      showNotification("error", "Failed to save the card", true);
     } finally {
       setIsLoading(false);
     }

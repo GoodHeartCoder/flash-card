@@ -16,8 +16,10 @@
   display: flex;
   gap: 4px;
   opacity: 0;
-  visibility: hidden;
   transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+.buttonContainer:has(.LoadingSpinner) {
+  opacity: 1 !important;
 }
 
 .row:hover .buttonContainer {
