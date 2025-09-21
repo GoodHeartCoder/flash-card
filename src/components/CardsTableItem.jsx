@@ -15,7 +15,7 @@ function CardsTableItem({
 }) {
   const [isDeleting, setIsDeleting] = useState(false);
   const { showNotification } = useDecks();
-  
+
   async function handleDeleteCard() {
     setIsDeleting(true);
     try {
