@@ -3,11 +3,11 @@ import Button from "./Button";
 import { Link } from "react-router-dom";
 import useDecks from "../contexts/useDecks";
 function DecksListItem({ deckId, name, deleteDeck }) {
-  const { setIsModalOpen, setEditingInfo } = useDecks();
+  const { setIsModalOpen, setEditingDeckId } = useDecks();
 
   async function handleEditName() {
     setIsModalOpen(true);
-    setEditingInfo({ isEditing: true, deckId: deckId });
+    setEditingDeckId(deckId);
   }
   function handleMenuChange(e) {
     const value = e.target.value;

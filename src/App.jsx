@@ -4,12 +4,14 @@ import DeckPage from "../src/pages/DeckPage";
 import Header from "./components/Header";
 import StudyPage from "./pages/StudyPage";
 import DecksProvider from "./contexts/DecksContext";
+import Notification from "./components/Notification";
 function App() {
   return (
     <>
       <BrowserRouter>
         <DecksProvider>
           <Header />
+          <Notification />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/decks/:id" element={<DeckPage />} />

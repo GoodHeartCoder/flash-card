@@ -1,3 +1,5 @@
+import LoadingSpinner from "./LoadingSpinner"; // Adjust path as needed
+
 const SIZES = {
   sm: { fontSize: "0.875rem", padding: "0.375rem 0.75rem" },
   md: { fontSize: "1rem", padding: "0.5rem 1rem" },
@@ -14,6 +16,7 @@ function Button({
   borderRadius = "5px",
   onClick,
   disabled = false,
+  loading = false,
 }) {
   return (
     <button
@@ -24,11 +27,17 @@ function Button({
         ...SIZES[size],
         borderRadius,
         border: "1px solid",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "0.5rem",
+        cursor: loading || disabled ? "not-allowed" : "pointer",
+        opacity: disabled && !loading ? 0.6 : 1,
       }}
-      onClick={disabled ? undefined : onClick}
-      disabled={disabled}
+      onClick={disabled || loading ? undefined : onClick}
+      disabled={disabled || loading}
     >
-      {text}
+      {loading ? <LoadingSpinner size="md" color="#fff" /> : text}
     </button>
   );
 }

@@ -51,3 +51,7 @@
 .deleteBtn:hover {
   background: #c82333;
 }
+
+.disable {
+  cursor: not-allowed;
+}

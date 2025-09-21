@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server --watch data/data.json --port 9000 --delay 200"
+    "server": "json-server --watch data/data.json --port 9000 --delay 500"
   },
   "dependencies": {
     "@hugeicons/core-free-icons": "^1.0.16",

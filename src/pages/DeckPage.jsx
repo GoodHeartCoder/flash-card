@@ -3,6 +3,7 @@ import styles from "./DeckPage.module.css";
 import CardEditor from "../components/CardEditor";
 import CardsTable from "../components/CardsTable";
 import { useEffect, useState } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
 function DeckPage() {
   const { id: deckId } = useParams();
   const [currentDeck, setCurrentDeck] = useState(null);
@@ -26,14 +27,29 @@ function DeckPage() {
 
   return (
     <div className={styles.DeckPage}>
-      <CardsTable
-        currentDeck={currentDeck}
-        deckId={deckId}
-        setCurrentAnswer={setCurrentAnswer}
-        setCurrentQuestion={setCurrentQuestion}
-        getCurrentDeck={getCurrentDeck}
-        setEditingCard={setEditingCard}
-      />
+      {currentDeck === null ? (
+        <div
+          style={{
+            background: "#f1f5f9",
+            display: "grid",
+            placeContent: "center",
+            height: "100%",
+          }}
+        >
+          {" "}
+          <LoadingSpinner size="xl" />
+        </div>
+      ) : (
+        <CardsTable
+          currentDeck={currentDeck}
+          deckId={deckId}
+          setCurrentAnswer={setCurrentAnswer}
+          setCurrentQuestion={setCurrentQuestion}
+          getCurrentDeck={getCurrentDeck}
+          setEditingCard={setEditingCard}
+          editingCard={editingCard}
+        />
+      )}
       <CardEditor
         deckId={deckId}
         getCurrentDeck={getCurrentDeck}

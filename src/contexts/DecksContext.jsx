@@ -6,20 +6,39 @@ function DecksProvider({ children }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [decks, setDecks] = useState([]);
   const [deckName, setDeckName] = useState("");
-  const [EditingInfo, setEditingInfo] = useState({
-    isEditing: false,
-    deckId: "",
+  const [editingDeckId, setEditingDeckId] = useState(null);
+  const [notification, setNotification] = useState({
+    type: null,
+    message: "",
+    isVisible: false,
   });
 
+  function showNotification(type, message, isVisible = true) {
+    setNotification({ type, message, isVisible });
+  }
+
   async function upsertDeck() {
+    const cleanDeckName = deckName.replace(/<[^>]+>/g, "");
+
+    // Check if a deck with this name already exists
+    const existingDeck = decks.find(
+      (deck) => deck.name.toLowerCase() === cleanDeckName.toLowerCase()
+    );
+
+    if (existingDeck && existingDeck.id !== editingDeckId) {
+      showNotification("error", "A deck with this name already exists");
+      setIsModalOpen(false);
+      return;
+    }
+
     const deckData = {
-      name: deckName.replace(/<[^>]+>/g, ""),
+      name: cleanDeckName,
       cards: [],
     };
 
     try {
       let ok, errorText;
-      if (!EditingInfo.isEditing) {
+      if (editingDeckId === null) {
         const res = await fetch("http://localhost:9000/decks", {
           method: "POST",
           headers: {
@@ -32,7 +51,7 @@ function DecksProvider({ children }) {
       } else {
         // this is for editing the deck name
         const res = await fetch(
-          `http://localhost:9000/decks/${EditingInfo.deckId}`,
+          `http://localhost:9000/decks/${editingDeckId}`,
           {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
@@ -47,10 +66,21 @@ function DecksProvider({ children }) {
         throw new Error("Failed to create deck");
       }
 
-      getDecks();
+      await getDecks();
+      showNotification(
+        "success",
+        `${editingDeckId ? "Edited" : "Created"} Deck Successfully.`
+      );
       setDeckName("");
+      setEditingDeckId(null);
     } catch (error) {
       console.error("Fetch error:", error);
+      showNotification(
+        "error",
+        `Failed to ${
+          editingDeckId ? "Edit" : "Create"
+        } deck. check your internet connection`
+      );
     } finally {
       setIsModalOpen((isModalOpen) => !isModalOpen);
     }
@@ -75,8 +105,13 @@ function DecksProvider({ children }) {
       if (!res.ok) throw new Error("Failed to delete deck");
 
       console.log("Deck deleted successfully");
-      getDecks();
+      await getDecks();
+      showNotification("success", "Deck deleted successfully");
     } catch (error) {
+      showNotification(
+        "error",
+        "Failed to delete deck. check your internet connection"
+      );
       console.error("Error deleting deck:", error);
     }
   }
@@ -87,12 +122,14 @@ function DecksProvider({ children }) {
     decks,
     setDecks,
     getDecks,
-    EditingInfo,
-    setEditingInfo,
+    editingDeckId,
+    setEditingDeckId,
     upsertDeck,
     deleteDeck,
     deckName,
     setDeckName,
+    notification,
+    showNotification,
   };
 
   return (

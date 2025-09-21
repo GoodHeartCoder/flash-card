@@ -16,7 +16,6 @@ function StudySessionForm() {
         <select
           value={selectedDeckId}
           onChange={(e) => setSelectedDeckId(e.target.value)}
-          defaultValue=""
         >
           <option value="" disabled hidden>
             select deck
@@ -32,7 +31,6 @@ function StudySessionForm() {
         <select
           value={studyMode}
           onChange={(e) => setStudyMode(e.target.value)}
-          defaultValue=""
         >
           <option value="" disabled hidden>
             select study mode

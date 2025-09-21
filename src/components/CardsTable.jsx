@@ -7,6 +7,7 @@ function CardsTable({
   setCurrentQuestion,
   getCurrentDeck,
   setEditingCard,
+  editingCard,
 }) {
   return (
     <div className={styles.scrollContainer}>
@@ -29,6 +30,7 @@ function CardsTable({
               setCurrentQuestion={setCurrentQuestion}
               getCurrentDeck={getCurrentDeck}
               setEditingCard={setEditingCard}
+              editingCard={editingCard}
             />
           ))}
         </tbody>

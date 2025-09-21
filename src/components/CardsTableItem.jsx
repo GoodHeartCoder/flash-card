@@ -8,6 +8,7 @@ function CardsTableItem({
   setCurrentQuestion,
   getCurrentDeck,
   setEditingCard,
+  editingCard,
 }) {
   async function handleDeleteCard() {
     try {
@@ -49,6 +50,8 @@ function CardsTableItem({
             bgColor="#007bff"
             color="white"
             onClick={hadnleEditCard}
+            disabled={editingCard ? true : false}
+            className={editingCard ? styles.disable : ""}
           />
           <Button
             text="Delete"
@@ -56,6 +59,8 @@ function CardsTableItem({
             bgColor="#dc3545"
             color="white"
             onClick={handleDeleteCard}
+            disabled={editingCard ? true : false}
+            className={editingCard ? styles.disable : ""}
           />
         </div>
       </td>

@@ -2,6 +2,7 @@ import styles from "./CardEditor.module.css";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import Button from "./Button";
+import useDecks from "../contexts/useDecks";
 
 function CardEditor({
   deckId,
@@ -13,10 +14,10 @@ function CardEditor({
   editingCard,
   setEditingCard,
 }) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const { showNotification } = useDecks();
   async function handleSaveCard(card) {
-    setIsSubmitting(true);
+    setIsLoading(true);
 
     try {
       const deckRes = await fetch(`http://localhost:9000/decks/${deckId}`);
@@ -34,22 +35,22 @@ function CardEditor({
         updatedCards = [...currentDeck.cards, card];
       }
 
-      const res = await fetch(`http://localhost:9000/decks/${deckId}`, {
+      await fetch(`http://localhost:9000/decks/${deckId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cards: updatedCards }),
       });
 
       // Reset form
+
+      await getCurrentDeck();
       setCurrentQuestion("");
       setCurrentAnswer("");
       setEditingCard(null);
-
-      getCurrentDeck();
     } catch {
       console.log();
     } finally {
-      setIsSubmitting(false);
+      setIsLoading(false);
     }
   }
 
@@ -77,17 +78,22 @@ function CardEditor({
       />
       <div className={styles.buttonGroup}>
         <Button
-          onClick={() =>
+          onClick={() => {
+            if (currentQuestion.trim() === "" || currentAnswer.trim() === "") {
+              showNotification("error", "Can't Add an Empty Card");
+              return;
+            }
+
             handleSaveCard({
               question: currentQuestion,
               answer: currentAnswer,
               id: editingCard?.id || nanoid(),
-            })
-          }
+            });
+          }}
           text={editingCard ? "Update Card" : "Add Card"}
           className={styles.addCard}
           size="lg"
-          disabled={isSubmitting}
+          loading={isLoading}
         />
         {editingCard && (
           <Button
