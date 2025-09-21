@@ -1,13 +1,5 @@
-i need to handle fetch errors
-i need to add loading state
-i to refactor my code to context in some pages
-when add supabase the manipulating data will be much easier
-
-in the study session form there diffrent resonse the disble the button handle them the errors
-
-i need to change my text editor
-
-in my editor in editing mode i can delete the card while editing i need to prevent that
-
-i want to use a popup for errors
-maybe you can use radio for the study mode
+add some text editing to my card editor
+when the user tries to study an empty deck a notifiction should appere
+in the deck list i need to add counter for the new cards and due cards
+i can study deck that have now new cards in sm-2 mode i need to prevent that
+i think i can make the studySession form better

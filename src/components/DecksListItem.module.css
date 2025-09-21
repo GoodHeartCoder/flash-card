@@ -22,14 +22,10 @@
   -moz-appearance: none;
 }
 
-.menuSelect option {
-  /* background: #fafbfc;
-  color: #24292e;
-  text-align: center;
-  border: 1px solid black; */
-}
-
 /* Remove default arrow for Firefox */
 .menuSelect::-ms-expand {
   display: none;
+}
+.buttonsContainer {
+  display: flex;
 }

@@ -14,8 +14,9 @@ function NewDeckModal() {
             onChange={(e) => setDeckName(e.target.value)}
             required={true}
             maxLength="50"
+            dir="auto"
           />
-          <div>
+          <div style={{ display: "flex" }}>
             <Button text="OK" size="lg" onClick={() => upsertDeck()} />
             <Button
               text="Cancel"

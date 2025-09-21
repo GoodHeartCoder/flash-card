@@ -16,6 +16,7 @@ function CardEditor({
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const { showNotification } = useDecks();
+
   async function handleSaveCard(card) {
     setIsLoading(true);
 
@@ -94,6 +95,10 @@ function CardEditor({
             handleSaveCard({
               question: currentQuestion,
               answer: currentAnswer,
+              interval: 1,
+              repetition: 0,
+              efactor: 2.5,
+              nextReview: "",
               id: editingCard?.id || nanoid(),
             });
           }}

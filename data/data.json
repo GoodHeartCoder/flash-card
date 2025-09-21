@@ -1,9 +1,79 @@
 {
   "decks": [
     {
-      "name": "fgdfg",
-      "cards": [],
+      "name": "النحو",
+      "cards": [
+        {
+          "question": "ماهو تعريف الكلام؟",
+          "answer": "اللفظ المفيد فائدةً يُحسَن السكوت عليها",
+          "interval": 2.5,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": "2025-09-24T13:46:10.133Z",
+          "id": "card1"
+        },
+        {
+          "question": "كم عدد أقسام الكلام؟",
+          "answer": "ثلاثة أقسام: اسم وفعل وحرف",
+          "interval": 1,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": "2025-09-22T13:46:35.282Z",
+          "id": "card2"
+        },
+        {
+          "question": "ما هو الاسم؟",
+          "answer": "ما دل على معنى في نفسه غير مقترن بزمان",
+          "interval": 4,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": "2025-09-25T13:46:37.548Z",
+          "id": "card3"
+        },
+        {
+          "question": "ما هو الفعل؟",
+          "answer": "ما دل على معنى في نفسه مقترن بزمان",
+          "interval": 4,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": "2025-09-25T13:46:20.155Z",
+          "id": "card4"
+        },
+        {
+          "question": "ما هو الحرف؟",
+          "answer": "ما دل على معنى في غيره",
+          "interval": 2.5,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": "2025-09-24T13:46:26.582Z",
+          "id": "card5"
+        }
+      ],
       "id": 1
+    },
+    {
+      "name": "sfdsdf",
+      "cards": [
+        {
+          "question": "dsf",
+          "answer": "fds",
+          "interval": 1,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": "",
+          "id": "vGveVHnWOvLdJMP6vzJ0N"
+        },
+        {
+          "question": "sfsdf",
+          "answer": "sdf",
+          "interval": 1,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": "",
+          "id": "OFVw4RPVrFIwphiQdB49b"
+        }
+      ],
+      "id": 2
     }
   ]
 }

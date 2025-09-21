@@ -21,8 +21,16 @@
 }
 
 .finishMessageScreen {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
   font-size: 3rem;
   display: flex;
   flex-direction: column;
   gap: 3rem;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
 }
