@@ -6,8 +6,8 @@ import useDecks from "../contexts/useDecks";
 function StudySessionForm() {
   const [selectedDeckId, setSelectedDeckId] = useState("");
   const [studyMode, setStudyMode] = useState("");
+  const { decks, showNotification } = useDecks();
 
-  const { decks } = useDecks();
   return (
     <form className={styles.formContainer}>
       <legend>Study Options</legend>
@@ -47,7 +47,7 @@ function StudySessionForm() {
           disabled={
             studyMode === "" ||
             selectedDeckId === "" ||
-            decks.find((deck) => deck.id === Number(selectedDeckId)).cards
+            decks?.find((deck) => deck.id === Number(selectedDeckId || 0)).cards
               .length === 0
               ? true
               : false

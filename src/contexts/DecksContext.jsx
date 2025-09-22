@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { DecksContext } from "./useDecks";
+import { countNewCards, countDueCards } from "../utils/CardsCounter";
 
 function DecksProvider({ children }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,6 +35,8 @@ function DecksProvider({ children }) {
     const deckData = {
       name: cleanDeckName,
       cards: [],
+      newCardsCount: this.cards.length,
+      dueCardsCount: 0,
     };
 
     try {
@@ -87,9 +90,35 @@ function DecksProvider({ children }) {
   }
 
   async function getDecks() {
-    const res = await fetch(`http://localhost:9000/decks`);
-    const data = await res.json();
-    setDecks(data);
+    try {
+      const res = await fetch(`http://localhost:9000/decks`);
+      const data = await res.json();
+
+      // Update counts for each deck
+      const updatedDecks = data.map((deck) => ({
+        ...deck,
+        newCardsCount: countNewCards(deck),
+        dueCardsCount: countDueCards(deck),
+      }));
+
+      setDecks(updatedDecks);
+
+      // Update the counts in the backend
+      await Promise.all(
+        updatedDecks.map((deck) =>
+          fetch(`http://localhost:9000/decks/${deck.id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              newCardsCount: deck.newCardsCount,
+              dueCardsCount: deck.dueCardsCount,
+            }),
+          })
+        )
+      );
+    } catch (error) {
+      console.error("Error fetching decks:", error);
+    }
   }
 
   async function deleteDeck(deckId) {

@@ -1,7 +1,7 @@
 import styles from "./StudyPage.module.css";
 import Button from "../components/Button";
 import { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useBlocker, useParams, useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner";
 
@@ -14,6 +14,7 @@ function StudyPage() {
   const [hasAnswered, setHasAnswered] = useState(false);
   const [isDeckCompleted, setIsDeckCompleted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
   // Handle spaced repetition logic
   function handleSpacedRepetition(card, difficulty) {
     const now = new Date();
@@ -211,6 +212,14 @@ function StudyPage() {
   useEffect(() => {
     getCurrentDeck();
   }, []);
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      if (mode === "spaced" && studyArray?.length > 0) e.preventDefault();
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [mode, studyArray]);
 
   return (
     <>

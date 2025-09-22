@@ -98,7 +98,7 @@ function CardEditor({
               interval: 1,
               repetition: 0,
               efactor: 2.5,
-              nextReview: "",
+              nextReview: null,
               id: editingCard?.id || nanoid(),
             });
           }}

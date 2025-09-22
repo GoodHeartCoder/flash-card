@@ -1,79 +1,163 @@
 {
   "decks": [
     {
-      "name": "النحو",
+      "name": "الصرف",
       "cards": [
         {
-          "question": "ماهو تعريف الكلام؟",
-          "answer": "اللفظ المفيد فائدةً يُحسَن السكوت عليها",
-          "interval": 2.5,
-          "repetition": 0,
-          "efactor": 2.5,
-          "nextReview": "2025-09-24T13:46:10.133Z",
-          "id": "card1"
-        },
-        {
-          "question": "كم عدد أقسام الكلام؟",
-          "answer": "ثلاثة أقسام: اسم وفعل وحرف",
-          "interval": 1,
-          "repetition": 0,
-          "efactor": 2.5,
-          "nextReview": "2025-09-22T13:46:35.282Z",
-          "id": "card2"
-        },
-        {
-          "question": "ما هو الاسم؟",
-          "answer": "ما دل على معنى في نفسه غير مقترن بزمان",
+          "question": "ما هو علم الصرف؟",
+          "answer": "علم يُعرف به أبنية الكلم العربية وأحوالها التي ليست بإعراب",
           "interval": 4,
           "repetition": 0,
           "efactor": 2.5,
-          "nextReview": "2025-09-25T13:46:37.548Z",
-          "id": "card3"
+          "nextReview": "2025-09-26T22:11:54.369Z",
+          "id": "card7"
         },
         {
-          "question": "ما هو الفعل؟",
-          "answer": "ما دل على معنى في نفسه مقترن بزمان",
-          "interval": 4,
-          "repetition": 0,
-          "efactor": 2.5,
-          "nextReview": "2025-09-25T13:46:20.155Z",
-          "id": "card4"
-        },
-        {
-          "question": "ما هو الحرف؟",
-          "answer": "ما دل على معنى في غيره",
+          "question": "ما هي الكلمة المتصرفة؟",
+          "answer": "الكلمة التي تقبل التغيير في بنيتها",
           "interval": 2.5,
           "repetition": 0,
           "efactor": 2.5,
-          "nextReview": "2025-09-24T13:46:26.582Z",
-          "id": "card5"
+          "nextReview": "2025-09-25T22:11:52.112Z",
+          "id": "card8"
+        },
+        {
+          "question": "كم عدد الميزان الصرفي؟",
+          "answer": "ثلاثة أحرف: فاء وعين ولام",
+          "interval": 4,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": "2025-09-26T22:11:58.412Z",
+          "id": "card9"
+        },
+        {
+          "question": "ما هو الفعل الثلاثي؟",
+          "answer": "ما كان على ثلاثة أحرف أصلية",
+          "interval": 2.5,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": "2025-09-25T22:11:55.194Z",
+          "id": "card10"
+        },
+        {
+          "question": "ما أقسام الفعل من حيث الزمن؟",
+          "answer": "ماضٍ ومضارع وأمر",
+          "interval": 6.25,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": "2025-09-28T22:12:55.294Z",
+          "id": "card11"
         }
       ],
-      "id": 1
+      "newCardsCount": 0,
+      "dueCardsCount": 0,
+      "id": 2
     },
     {
-      "name": "sfdsdf",
+      "name": "البلاغة",
       "cards": [
         {
-          "question": "dsf",
-          "answer": "fds",
+          "question": "ما أقسام البلاغة؟",
+          "answer": "المعاني والبيان والبديع",
           "interval": 1,
           "repetition": 0,
           "efactor": 2.5,
-          "nextReview": "",
-          "id": "vGveVHnWOvLdJMP6vzJ0N"
+          "nextReview": null,
+          "id": "card12"
         },
         {
-          "question": "sfsdf",
-          "answer": "sdf",
+          "question": "ما هو التشبيه؟",
+          "answer": "الدلالة على مشاركة أمر لآمر آخر في معنى",
+          "interval": 2.5,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": "2025-09-25T22:17:40.900Z",
+          "id": "card13"
+        },
+        {
+          "question": "ما أركان التشبيه؟",
+          "answer": "المشبه والمشبه به ووجه الشبه وأداة التشبيه",
+          "interval": 4,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": "2025-09-26T22:17:41.999Z",
+          "id": "card14"
+        },
+        {
+          "question": "ما هي الاستعارة؟",
+          "answer": "تشبيه حُذف أحد طرفيه",
           "interval": 1,
           "repetition": 0,
           "efactor": 2.5,
-          "nextReview": "",
-          "id": "OFVw4RPVrFIwphiQdB49b"
+          "nextReview": null,
+          "id": "card15"
+        },
+        {
+          "question": "ما هو الكناية؟",
+          "answer": "لفظ أُطلق وأُريد به لازم معناه مع جواز إرادة المعنى الأصلي",
+          "interval": 1,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": null,
+          "id": "card16"
+        },
+        {
+          "question": "ما هو الطباق؟",
+          "answer": "الجمع بين المتضادين في الكلام",
+          "interval": 1,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": null,
+          "id": "card17"
         }
       ],
-      "id": 2
+      "newCardsCount": 4,
+      "dueCardsCount": 0,
+      "id": 3
+    },
+    {
+      "name": "العروض",
+      "cards": [
+        {
+          "question": "ما هو علم العروض؟",
+          "answer": "علم يُعرف به صحيح أوزان الشعر العربي من فاسدها",
+          "interval": 1,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": null,
+          "id": "card18"
+        },
+        {
+          "question": "من واضع علم العروض؟",
+          "answer": "الخليل بن أحمد الفراهيدي",
+          "interval": 1,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": null,
+          "id": "card19"
+        },
+        {
+          "question": "ما هو البحر الطويل؟",
+          "answer": "فعولن مفاعيلن فعولن مفاعيلن",
+          "interval": 1,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": null,
+          "id": "card20"
+        },
+        {
+          "question": "كم عدد البحور في الشعر العربي؟",
+          "answer": "ستة عشر بحراً",
+          "interval": 1,
+          "repetition": 0,
+          "efactor": 2.5,
+          "nextReview": null,
+          "id": "card21"
+        }
+      ],
+      "newCardsCount": 4,
+      "dueCardsCount": 0,
+      "id": 4
     }
   ]
 }
