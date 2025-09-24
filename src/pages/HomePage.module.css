@@ -4,6 +4,7 @@
   grid-template-rows: 1fr fit-content;
   max-width: 900px;
   margin-inline: auto;
+  gap: 1rem;
 }
 
 .noDecksMessage {

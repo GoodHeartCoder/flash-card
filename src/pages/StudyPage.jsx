@@ -9,6 +9,7 @@ function StudyPage() {
   const { id: deckId } = useParams();
   const [searchParams] = useSearchParams();
   const mode = searchParams.get("mode");
+  const count = searchParams.get("count");
   const [currentDeck, setCurrentDeck] = useState(null);
   const [studyArray, setStudyArray] = useState(null);
   const [hasAnswered, setHasAnswered] = useState(false);
@@ -99,8 +100,25 @@ function StudyPage() {
           if (!card.nextReview) return true; // New cards (never studied)
           return new Date(card.nextReview) <= now; // Due cards
         });
+
+        // If no cards are due or the deck is empty, mark as completed
+        if (cardsCopy.length === 0) {
+          setIsDeckCompleted(true);
+          setStudyArray([]);
+          return deck;
+        }
       } else if (mode === "random") {
-        cardsCopy = randomizeCards(cardsCopy);
+        const requestedCount = count ? parseInt(count) : cardsCopy.length;
+        cardsCopy = randomizeCards(
+          cardsCopy,
+          Math.min(requestedCount, cardsCopy.length)
+        );
+        // If deck is empty, mark as completed
+        if (cardsCopy.length === 0) {
+          setIsDeckCompleted(true);
+          setStudyArray([]);
+          return deck;
+        }
       }
 
       setStudyArray(cardsCopy);

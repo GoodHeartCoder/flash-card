@@ -1,40 +1,143 @@
 .formContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto, 1fr;
-  padding: 1rem 2rem;
-  grid-column: 1;
-  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
 .formContainer legend {
-  grid-row: 1;
-  grid-column: 1 / span 2;
-  justify-self: center;
-  font-size: 2rem;
-  padding-bottom: 2rem;
-  text-decoration: underline;
-  font-weight: bolder;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
-.formContainer select {
-  width: fit-content;
-  padding: 0.5rem 1rem;
-  outline: none;
-  font-size: 1rem;
-  border-radius: 5px;
-}
+
 .formContainer fieldset {
   border: none;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
+  padding: 0;
 }
+
+.deckSelection select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.deckSelection select:hover {
+  border-color: #cbd5e1;
+}
+
+.deckSelection select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.25rem 0;
+}
+
+.radioOption {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background: #f8fafc;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.radioOption:hover {
+  background: #f1f5f9;
+}
+
+.radioOption input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #94a3b8;
+  border-radius: 50%;
+  margin-right: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.radioOption input[type="radio"]:checked {
+  border-color: #3b82f6;
+  background: #3b82f6;
+}
+
+.radioOption input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+}
+
+.radioOption label {
+  font-size: 0.95rem;
+  color: #475569;
+  cursor: pointer;
+  flex: 1;
+}
+
+.countSelection {
+  padding-top: 0.5rem;
+}
+
+.countSelection input[type="number"] {
+  width: 100%;
+  max-width: 150px;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.countSelection input[type="number"]:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  outline: none;
+}
+
 .formContainer label {
-  font-size: 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 0.375rem;
 }
+
 .formBtn {
+  width: 100%;
+  margin-top: 1.5rem;
 }
 
 .formContainer a {
-  width: fit-content;
-  height: fit-content;
+  width: 100%;
+  text-decoration: none;
 }

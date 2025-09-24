@@ -35,7 +35,7 @@ function DecksProvider({ children }) {
     const deckData = {
       name: cleanDeckName,
       cards: [],
-      newCardsCount: this.cards.length,
+      newCardsCount: 0,
       dueCardsCount: 0,
     };
 
