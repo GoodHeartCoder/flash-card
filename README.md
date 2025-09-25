@@ -1,12 +1,47 @@
-# React + Vite
+# Flash Card Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my first complete React project - a flash card application for spaced repetition learning. I built it to help with my own studies!
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend**: React 19.1.1 with Vite
+- **Backend**: JSON Server for API simulation
+- **State Management**: React Context
+- **Key Features**:
+  - Deck and card management
+  - Spaced repetition learning
+  - Due card tracking
+  - Simple and clean UI
 
-## Expanding the ESLint configuration
+## Personal Notes
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This was my first serious React project where I went beyond tutorials. A few things I'd do differently next time:
+
+1. **UI/Fetching Separation**: The UI logic is currently mixed with data fetching logic in components like `DecksContext.jsx`. This works but makes the code harder to maintain.
+
+2. **First Project Challenges**: As my first real project, I focused on getting features working rather than perfect architecture. The JSON Server backend was great for quick prototyping but has limitations for production use.
+
+## Current Issues & Planned Improvements
+
+- Add rich text editing to card editor
+- Implement image support for cards
+- Add Anki deck import functionality
+- Navigation guard for unscheduled cards
+- Migrate to a real backend
+
+## Getting Started
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Start JSON Server:
+```bash
+npm run server
+```
+
+3. Start development server:
+```bash
+npm run dev
+```

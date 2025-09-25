@@ -2,17 +2,7 @@
   "decks": [
     {
       "name": "gf",
-      "cards": [
-        {
-          "question": "fg",
-          "answer": "fg",
-          "interval": 4,
-          "repetition": 0,
-          "efactor": 2.5,
-          "nextReview": "2025-09-27T17:05:56.409Z",
-          "id": "hzXL57Lm9GaaNlwDq7naO"
-        }
-      ],
+      "cards": [],
       "newCardsCount": 0,
       "dueCardsCount": 0,
       "id": 1

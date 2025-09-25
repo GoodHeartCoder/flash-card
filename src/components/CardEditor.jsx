@@ -1,5 +1,5 @@
 import styles from "./CardEditor.module.css";
-import { useState } from "react";
+import { useRef } from "react";
 import { nanoid } from "nanoid";
 import Button from "./Button";
 import useDecks from "../contexts/useDecks";
@@ -14,12 +14,30 @@ function CardEditor({
   editingCard,
   setEditingCard,
 }) {
-  const [isLoading, setIsLoading] = useState(false);
   const { showNotification } = useDecks();
+  const isSaving = useRef(false);
 
   async function handleSaveCard(card) {
-    setIsLoading(true);
+    // Don't allow multiple saves at once
+    if (isSaving.current) return;
+    isSaving.current = true;
 
+    // Create a copy of the card to avoid reference issues
+    const cardToSave = { ...card };
+    
+    // Reset form immediately for better UX
+    setCurrentQuestion("");
+    setCurrentAnswer("");
+    setEditingCard(null);
+
+    // Show optimistic update notification
+    showNotification("info", "Saving card...", false);
+
+    // Save in the background
+    saveCardToServer(cardToSave);
+  }
+
+  async function saveCardToServer(card) {
     try {
       const deckRes = await fetch(`http://localhost:9000/decks/${deckId}`);
       const currentDeck = await deckRes.json();
@@ -42,23 +60,20 @@ function CardEditor({
         body: JSON.stringify({ cards: updatedCards }),
       });
 
-      // Reset form
-
+      // Refresh the deck data
       await getCurrentDeck();
-      setCurrentQuestion("");
-      setCurrentAnswer("");
-      setEditingCard(null);
-
-      // Show success notification
+      
       showNotification(
         "success",
         editingCard ? "Card updated successfully!" : "Card added successfully!",
         true
       );
-    } catch {
-      showNotification("error", "Failed to save the card", true);
+    } catch (error) {
+      console.error("Failed to save card:", error);
+      showNotification("error", "Failed to save the card. Please try again.", true);
+      // You might want to implement a retry mechanism here
     } finally {
-      setIsLoading(false);
+      isSaving.current = false;
     }
   }
 
@@ -105,7 +120,7 @@ function CardEditor({
           text={editingCard ? "Update Card" : "Add Card"}
           className={styles.addCard}
           size="lg"
-          loading={isLoading}
+          loading={isSaving.current}
         />
         {editingCard && (
           <Button
